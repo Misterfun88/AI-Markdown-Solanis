@@ -244,4 +244,30 @@ export default function Dashboard({}: Props) {
                 className="grid-stack-item group"
                 gs-w={widg.w}
                 gs-h={widg.h}
-            
+                gs-id={widg.id}
+                gs-no-move={`${widg.static}`}
+                gs-no-resize={`${widg.static}`}
+                key={widg.id}
+                ref={(node) => {
+                  const map = getWidgetsMap();
+                  if (node) map.set(widg.id, node);
+                  else map.delete(widg);
+                }}
+              >
+                <div className="grid-stack-item-content border border-primary border-opacity-50 rounded-lg p-2">
+                  <Widget {...widg} />
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="flex h-full w-full items-center  justify-center">
+              <GradientHeading variant={"pink"}>
+                Adicione widgets
+              </GradientHeading>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
