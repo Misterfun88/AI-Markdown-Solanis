@@ -87,4 +87,48 @@ export default function SettingsPage({}: Props) {
                 </div>
               </div>
               <div className="flex flex-row gap-2">
-            
+                <Switch />
+                <div className="flex flex-col gap-1">
+                  <p className="text-sm font-bold">Amigos</p>
+                  <p className="text-sm">
+                    Notificações sobre atividades de usuários que você é amigo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Separator className="my-4" />
+          <div className="flex flex-row gap-8">
+            <div className="flex flex-col gap-4 w-1/4">
+              <h4 className="text-xl font-bold">Notificações Push</h4>
+              <p className="text-sm text-muted-foreground">
+                Receba notificações push diretamente no seu dispositivo.
+              </p>
+            </div>
+            <div className="flex flex-col justify-center gap-4 w-1/2">
+              <div className="flex flex-row gap-2">
+                <Switch />
+                <div className="flex flex-col gap-1">
+                  <p className="text-sm font-bold">Mensagens diretas</p>
+                  <p className="text-sm">
+                    Receba notificações push quando receber uma mensagem direta.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row gap-2">
+                <Switch />
+                <div className="flex flex-col gap-1">
+                  <p className="text-sm font-bold">Sugestões de melhorias</p>
+                  <p className="text-sm">
+                    Receba notificações push com sugestões de melhorias IA para
+                    seus documentos markdown.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
