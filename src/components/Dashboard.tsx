@@ -161,4 +161,87 @@ export default function Dashboard({}: Props) {
 
   useEffect(() => {
     const saved = grid.save(true) as GridStackWidget[];
-    // setWidgets(saved.map((widg: any) => ({ .
+    // setWidgets(saved.map((widg: any) => ({ ...widg, id: widg.id })));
+    console.log("salvou");
+  }, [widgets]);
+
+  return (
+    <>
+      <div className="flex flex-row items-center justify-between pb-4">
+        <p>
+          Bem vindo <span className="font-bold">Gustavo</span>, ao seu
+          Dashboard!
+        </p>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild disabled={false}>
+            <Button
+              variant={"outline"}
+              className={cn(
+                "h-min p-2",
+                widgets.length === 0 &&
+                  "animate-shine bg-gradient-to-r from-primary/50 via-accent-foreground/15 to-secondary/50 dark:from-primary/50 dark:via-primary-foreground/15 dark:to-primary/50 bg-[length:400%_100%]",
+              )}
+            >
+              <PlusIcon size={14} />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Widgets</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>Gráficos</DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem
+                      className="flex flex-row gap-2 justify-between cursor-pointer"
+                      onClick={() => addWidget("graphPie")}
+                    >
+                      Gráfico Pizza <PieChart size={14} />
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className="flex flex-row gap-2 justify-between cursor-pointer"
+                      onClick={() => addWidget("graphLine")}
+                    >
+                      Gráfico Linha <LineChart size={14} />
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className="flex flex-row gap-2 justify-between cursor-pointer"
+                      onClick={() => addWidget("graphBar")}
+                    >
+                      Gráfico Barra <BarChart size={14} />
+                    </DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+              <DropdownMenuItem
+                className="flex flex-row gap-2 justify-between cursor-pointer"
+                onClick={() => addWidget("recentNotes")}
+              >
+                Notas recentes <FileStack size={14} />
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="flex flex-row gap-2 justify-between cursor-pointer"
+                onClick={() => addWidget("productivity")}
+              >
+                Produtividade <Kanban size={14} />
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="flex flex-row gap-2 justify-between cursor-pointer"
+                onClick={() => addWidget("neuralAI")}
+              >
+                Neural IA <Sparkles size={14} />
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      <div className="p-4 border border-gray-200 rounded-lg max-h-[83vh]">
+        <div className="grid-stack max-h-[80vh]">
+          {widgets.length > 0 ? (
+            widgets.map((widg) => (
+              <div
+                className="grid-stack-item group"
+                gs-w={widg.w}
+                gs-h={widg.h}
+            
