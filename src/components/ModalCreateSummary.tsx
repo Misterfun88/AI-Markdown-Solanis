@@ -34,4 +34,14 @@ export default function ModalCreateSummary({
           <Button
             variant={"shine"}
             className="mt-4 float-right"
-  
+            onClick={() => {
+              //TODO: Create summary
+            }}
+          >
+            Criar Resumo
+          </Button>
+        </DialogDescription>
+      </DialogContent>
+    </Dialog>
+  );
+}
